@@ -10,22 +10,22 @@ body{
     justify-content: center;
 }
 
-.yellow {
+#yellow {
     height: 40vh;
     width: 40vw;
     background: rgb(150, 150, 0)
 }
-.blue {
+#blue {
     height: 40vh;
     width: 40vw;
     background: rgb(0, 0, 150)
 }
-.red {
+#red {
     height: 40vh;
     width: 40vw;
     background: rgb(150, 0, 0)
 }
-.green {
+#green {
     height: 40vh;
     width: 40vw;
     background: rgb(0, 73, 0)

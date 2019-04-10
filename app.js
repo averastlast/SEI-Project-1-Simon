@@ -1,28 +1,41 @@
 console.log("Hello World")
 
-//Testing CSS class color change
+//Start Button
 document.querySelectorAll("input.start")[0].addEventListener("click", function() {
-    console.log("x")
-    document.querySelectorAll("input.yellow")[0].classList.add("lightOn")})
-    //remove
-    // document.querySelectorAll("input.yellow")[0].classList.remove("lightOn")
-
-let patternBulid = []
-
-//Blink Animation Test
-document.querySelectorAll("input.red")[0].addEventListener("click", function() {
-
-console.log("x")
-setTimeout(function(){ document.querySelectorAll("input.red")[0].classList.add("lightOn") }, 1000);
-setTimeout(function(){ document.querySelectorAll("input.red")[0].classList.remove("lightOn") }, 5000);
-
 
 })
 
+//Objects to hold player and computer characteristics
+let user = {
+    turnStatus: false,
+    patternArray: []
+} 
+let computerSIMON = {
+    turnStatus: true,
+    patternArray: []
+} 
 
+
+//Turn checker
+function turnDecider() {
+  }
+
+
+//Have a number link to a colored div?
+function assignColorBlink(i) {
+    return document.querySelectorAll("input.color")[i]
+}
+
+//Blink Animation Test
+document.querySelectorAll("input.color")[0].addEventListener("click", function() {
+console.log("x")
+setTimeout(function(){ document.querySelectorAll("input.color")[0].classList.add("lightOn") }, 300);
+setTimeout(function(){ document.querySelectorAll("input.color")[0].classList.remove("lightOn") }, 1200);
+})
 
 //Random Number Generator 
-console.log(randomNum(1,5))
+console.log(randomNum(0,4))
 function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
+
