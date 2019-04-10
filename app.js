@@ -1,6 +1,8 @@
 console.log("Hello World")
 
-
-document.getElementById("start").addEventListener("click", function() {
+//Testing CSS class color change
+document.querySelectorAll("input.start")[0].addEventListener("click", function() {
     console.log("x")
-    document.querySelectorAll("input.submit")[1].classList.add("lightOn")})
+    document.querySelectorAll("input.yellow")[0].classList.add("lightOn")})
+
+let patternBulid = []
