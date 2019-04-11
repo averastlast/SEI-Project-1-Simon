@@ -14,6 +14,8 @@ let randomNumDef = randomNum(0,4)
 
 //Start Button
 document.querySelectorAll("input.start")[0].addEventListener("click", function() {
+
+    
     startButtonAnimation ()
     setTimeout(function() {startButtonAnimation ()}, 1000)
     setTimeout(function() {blinkDiv (randomNumDef)}, 2100)
@@ -24,6 +26,23 @@ function patternMaker() {
     user.patternArray.push(randomNumDef)
     computerSIMON.patternArray.push(randomNumDef)
     console.log(computerSIMON.patternArray + user.patternArray)
+}
+
+//Comparing Arrays
+function comparePattern(x, y) {
+let arrayStatus = null;
+    if (x.length === y.length) {
+        arrayStatus = true;
+    }
+    for (let i = 0; i < x.length; i++) {
+        if (x[i]===y[i]) {
+            arrayStatus = true;
+        }
+        else {
+           return arrayStatus = false;
+        } 
+    }
+    return arrayStatus;
 }
 
 //Turn Changer
@@ -41,6 +60,14 @@ function turnChanger() {
 function assignColorDiv(i) {
     return document.querySelectorAll("input.color")[i]
 }
+
+
+//When user clicks div[i]
+//push i into userarray 
+
+
+
+
 
 //Time of blink needs to be varied based on either pattern feed back or user click
 
@@ -60,12 +87,13 @@ function blinkDiv (i) {
 
 //Startup flash (flashes all squares to signal beginning of game)
 function startButtonAnimation () {
-    for (i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
         blinkDiv (i)
     }
 }
 
 //Random Number Generator 
+//Source: https://www.w3schools.com/js/js_random.asp
 function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
