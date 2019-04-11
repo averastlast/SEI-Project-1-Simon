@@ -12,20 +12,43 @@ let computerSIMON = {
 //Varible so that the SAME random number is pushed to both arrays
 let randomNumDef = randomNum(0,4)
 
+//Global Variables
+let switchOn = null;
+let winRazz
+let onBTNClickCount = 0;
+
+//On Button, alters by click number
+document.querySelectorAll("input.on")[0].addEventListener("click", function() { 
+    onBTNClickCount+=1; 
+//ON    
+    if (onBTNClickCount % 2 !== 0) {
+        switchOn = true
+    }
+//OFF    
+    else {
+        switchOn = false
+    }
+})
+
 //Start Button
 document.querySelectorAll("input.start")[0].addEventListener("click", function() {
-
-    
     startButtonAnimation ()
     setTimeout(function() {startButtonAnimation ()}, 1000)
-    setTimeout(function() {blinkDiv (randomNumDef)}, 2100)
+    if (switchOn || winRazz) {
+
+    }
 })
+
+//Gameplay
+function playGame () {
+    for (let i = 0; i < 9; i++) {
+        computerSIMON.patternArray.push(randomNum(0,4))
+    }
+}
 
 //Pattern Maker
 function patternMaker() {
-    user.patternArray.push(randomNumDef)
     computerSIMON.patternArray.push(randomNumDef)
-    console.log(computerSIMON.patternArray + user.patternArray)
 }
 
 //Comparing Arrays
@@ -56,39 +79,37 @@ function turnChanger() {
     }
   }
 
-//Have a number link to a colored div?
-function assignColorDiv(i) {
-    return document.querySelectorAll("input.color")[i]
+//When user clicks div[i]
+//push i into userarray and does animation&sound??
+function playerTurn (i) {
+    document.querySelectorAll("input.color")[i].addEventListener("click", function() {
+        user.patternArray.push(i)
+        blinkbeepDiv (i)
+    })
+
 }
 
-
-//When user clicks div[i]
-//push i into userarray 
-
-
-
-
-
-//Time of blink needs to be varied based on either pattern feed back or user click
-
-//Blink Animation Test
-
-document.querySelectorAll("input.color")[0].addEventListener("click", function() {
-console.log("x")
-setTimeout(function(){ document.querySelectorAll("input.color")[0].classList.add("lightOn") }, 300);
-setTimeout(function(){ document.querySelectorAll("input.color")[0].classList.remove("lightOn") }, 1000);
-})
-
-//Main Animation. Time needs to be parametertized...
+//Singular Div Animation. i is div refers to div class Time needs to be parametertized?
 function blinkDiv (i) {
     setTimeout(function(){ document.querySelectorAll("input.color")[i].classList.add("lightOn") }, 300);
     setTimeout(function(){ document.querySelectorAll("input.color")[i].classList.remove("lightOn") }, 1000);
 }
 
-//Startup flash (flashes all squares to signal beginning of game)
+//Singular Div Audio ????
+function audioDiv () {
+    
+}
+
+//Singular Div AnimatedAudio WORK!!!!!!
+function blinkbeepDiv (i) {
+    blinkDiv (i)
+    //audioDiv (i)
+}
+//Startup flash (flashes all squares to signal beginning of game) WORK!!!!!!!
 function startButtonAnimation () {
     for (let i = 0; i < 4; i++) {
         blinkDiv (i)
+        //audioDiv (i)
     }
 }
 
