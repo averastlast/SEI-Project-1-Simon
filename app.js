@@ -15,6 +15,7 @@ let randomNumDef = randomNum(0,4)
 //Global Variables
 let switchOn = null;
 let winRazz
+let levelLimitor = 0;
 let onBTNClickCount = 0;
 
 //On Button, alters by click number
@@ -35,20 +36,28 @@ document.querySelectorAll("input.start")[0].addEventListener("click", function()
     startButtonAnimation ()
     setTimeout(function() {startButtonAnimation ()}, 1000)
     if (switchOn || winRazz) {
-
+        playGame()
     }
 })
 
-//Gameplay
 function playGame () {
-    for (let i = 0; i < 9; i++) {
-        computerSIMON.patternArray.push(randomNum(0,4))
-    }
+    winRazz = false;
+    computerSIMON.patternArray = []
+    user.patternArray = []
 }
 
-//Pattern Maker
-function patternMaker() {
-    computerSIMON.patternArray.push(randomNumDef)
+
+//Gameplay Legnth, determines levels, taken from original game
+//SKILL LVL 1 SEQ 8
+//SKILL LVL 2 SEQ 14
+//SKILL LVL 3 SEQ 20
+//SKILL LVL 4 SEQ 31
+function patternPusher (seqLength) {
+    levelLimitor++;
+        computerSIMON.patternArray.push(randomNumDef)
+    if (levelLimitor>seqLength) {
+        return;
+    }
 }
 
 //Comparing Arrays
@@ -79,20 +88,40 @@ function turnChanger() {
     }
   }
 
-//When user clicks div[i]
-//push i into userarray and does animation&sound??
-function playerTurn (i) {
+//When user clicks div[i] push i into userarray and does animation&sound??
+
+divclick (0)
+divclick (1)
+divclick (2)
+divclick (3)
+
+function divclick (i) {
     document.querySelectorAll("input.color")[i].addEventListener("click", function() {
-        user.patternArray.push(i)
+        divclickRecord()
+        comparePattern(computerSIMON.patternArray, user.patternArray)
         blinkbeepDiv (i)
     })
+}
 
+function divclickRecord() {
+    if () {
+        user.patternArray.push(i)
+    }
 }
 
 //Singular Div Animation. i is div refers to div class Time needs to be parametertized?
 function blinkDiv (i) {
-    setTimeout(function(){ document.querySelectorAll("input.color")[i].classList.add("lightOn") }, 300);
-    setTimeout(function(){ document.querySelectorAll("input.color")[i].classList.remove("lightOn") }, 1000);
+    setTimeout(function(){ litUpDiv (i) }, 100);
+    setTimeout(function(){ dimmedDownDiv (i) }, 1000);
+}
+
+//Lights up divs
+function litUpDiv (i) {
+    document.querySelectorAll("input.color")[i].classList.add("lightOn") 
+}
+//Dims down divs
+function dimmedDownDiv (i) {
+    document.querySelectorAll("input.color")[i].classList.remove("lightOn") 
 }
 
 //Singular Div Audio ????
