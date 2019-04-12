@@ -31,22 +31,44 @@ document.querySelectorAll("input.on")[0].addEventListener("click", function() {
 
 //Start Button
 document.querySelectorAll("input.start")[0].addEventListener("click", function() {
-    startButtonAnimation ()
-    setTimeout(function() {startButtonAnimation ()}, 1000)
-    if (switchOn || winRazz) {
+    // startButtonAnimation ()
+    // setTimeout(function() {startButtonAnimation ()}, 1000)
+    // if (switchOn || winRazz) {
         playGame()
-    }
+    // }
 })
 
 function playGame () {
-    winRazz = false;
-    computerSIMON.patternArray = []
-    user.patternArray = []
+//COMPUTER CODE, TURN 1
 
-    //if user selects easy
-    patternPusher (9)
-    //button lights up
-    turnChanger()
+//SELECT RANDOM NUMBER (0-3)
+//     let randomNumDef = randomNum(0, 4)
+
+//PUSHES THAT RANDOM NUMBER INTO COMPUTER ARRAY
+//     computerSIMON.patternArray.push(randomNumDef)
+
+//LIGHT UP THAT DIV CORRESPONDING TO RANDOM NUMBER
+//     blinkDiv (randomNumDef) 
+
+//CHECK TEST: WORKING
+// console.log(computerSIMON.patternArray)
+
+//USER CODE, TURN 1
+
+//MAKES DIVS CLICK AND LIGHT IN RESPONSE
+divclick (0)
+divclick (1)
+divclick (2)
+divclick (3)
+
+//RECORDING THAT DIV CLICK
+
+
+
+    // //if user selects easy
+    // patternPusher (9)
+    // //button lights up
+    // turnChanger()
 }
 
 
@@ -57,7 +79,7 @@ function playGame () {
 //SKILL LVL 4 SEQ 31
 function patternPusher (seqLength) {
     levelLimitor++;
-    let randomNumDef = randomNum(0, 4)
+    
     if (levelLimitor>seqLength) {
         return;
     }
@@ -93,28 +115,23 @@ function turnChanger() {
 
 //When user clicks div[i] push i into userarray and does animation&sound??
 
-divclick (0)
-divclick (1)
-divclick (2)
-divclick (3)
+
 
 function divclick (i) {
     document.querySelectorAll("input.color")[i].addEventListener("click", function() {
-        divclickRecord()
-        comparePattern(computerSIMON.patternArray, user.patternArray)
          blinkbeepDiv (i)
     })
 }
 
-function divclickRecord() {
-   /* if () {
-        user.patternArray.push(i)
-    }*/
-}
+// function divclickRecord() {
+//    /* if () {
+//         user.patternArray.push(i)
+//     }*/
+// }
 
 //Singular Div Animation. i is div refers to div class Time needs to be parametertized?
 function blinkDiv (i) {
-    setTimeout(function(){ litUpDiv (i) }, 100);
+    setTimeout(function(){ litUpDiv (i) }, 200);
     setTimeout(function(){ dimmedDownDiv (i) }, 1000);
 }
 
