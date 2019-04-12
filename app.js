@@ -40,15 +40,15 @@ document.querySelectorAll("input.start")[0].addEventListener("click", function()
 
 function playGame () {
 
-//COMPUTER CODE, TURN 1
+//COMPUTER CODE, it turns computerSIMON.turnStatus false at the end
 compSIMONrun()
 
  if (computerSIMON.turnStatus === false) { 
-//USER CODE, TURN 1
+//USER CODE
 
 //MAKES DIVS CLICK AND LIGHT IN RESPONSE AND RECORDING THAT DIV CLICK. NEED SOUND FILE ADD
-//ALSO NESTED IF TO COMPARE, NEEDS TO HAPPEN IN EACH CLICK FOR UPDATE OF NESTED IF STATEMENT
-//reset user array at the beginning of each user turn to have compare arrays length trigger!!!!!!!!!!!!
+//IF STATEMENT COMPARES ARRAY VALUES AS THEY ARE PROVIDED BY THE USER, ELSE IF STARTS THE COMPUTERS TURN
+//NEED TO MAKE BUTTONS NOT CLICKABLE DURING COMP SIMON RUN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 document.querySelectorAll("input.color")[0].addEventListener("click", function() {
     blinkbeepDiv (0)
     user.patternArray.push(0)
@@ -56,15 +56,17 @@ document.querySelectorAll("input.color")[0].addEventListener("click", function()
         //END GAME
         console.log("END GAME")
     }   
+    //WIN CONDITIONS need to make number a variable to change based on level!!!!!!!!!!!
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === 4) {
+        console.log("WIN")
+    }
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
         // get back to computer turn not working
         compSIMONrun()
         console.log("comp turn")
     }
     
-   
 })
-
 
 document.querySelectorAll("input.color")[1].addEventListener("click", function() {
     blinkbeepDiv (1)
@@ -73,12 +75,16 @@ document.querySelectorAll("input.color")[1].addEventListener("click", function()
         //END GAME
         console.log("END GAME")
     }   
+    //WIN CONDITIONS
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === 4) {
+        console.log("WIN")
+    }
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
         // get back to computer turn not working
         compSIMONrun()
         console.log("comp turn")
     }
-
+    
 })
 
 document.querySelectorAll("input.color")[2].addEventListener("click", function() {
@@ -87,13 +93,17 @@ document.querySelectorAll("input.color")[2].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
+    }
+    //WIN CONDITIONS
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === 4) {
+        console.log("WIN")
     }   
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
         // get back to computer turn not working
         compSIMONrun()
         console.log("comp turn")
     }
-
+    
 })
 
 document.querySelectorAll("input.color")[3].addEventListener("click", function() {
@@ -102,13 +112,16 @@ document.querySelectorAll("input.color")[3].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
+    }
+    //WIN CONDITIONS
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === 4) {
+        console.log("WIN")
     }   
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
         // get back to computer turn not working
         compSIMONrun()
         console.log("comp turn")
     }
-
     
 })
 
@@ -124,67 +137,28 @@ function compSIMONrun() {
     //PUSHES THAT RANDOM NUMBER INTO COMPUTER ARRAY
         computerSIMON.patternArray.push(randomNumDef)
     
-    //LIGHT UP THAT DIV CORRESPONDING TO RANDOM NUMBER, FIND PATTERN FUNCTION!!!!!!!!!
+    //LIGHT UP THAT DIV CORRESPONDING TO RANDOM NUMBER, PATTERN.
+    for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
+        setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (800 + (k*800)))
+    }
 
-for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
-    setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (1000 + (k*1000)))
-    console.log(k)
-}
+    //RESET PLAYER ARRAY
+    user.patternArray = []
 
-//RESET PLAYER ARRAY
-user.patternArray = []
-
-        // setTimeout(function(){ blinkDiv (computerSIMON.patternArray[0]) }, 1000); 
-        //  if (computerSIMON.patternArray.length === 2) {
-        //     setTimeout(function(){ blinkDiv (computerSIMON.patternArray[1]) }, 2000);
-        //  }
-        //  if (computerSIMON.patternArray.length === 3) {
-        //     setTimeout(function(){ blinkDiv (computerSIMON.patternArray[2]) }, 3000);
-        //  }
-    
     //CHECK TEST: WORKING
-        console.log(computerSIMON.patternArray)
-        // console.log(computerSIMON.turnStatus)
-    
-     //Change turn status
-        computerSIMON.turnStatus = false;
-        // console.log(computerSIMON.turnStatus)
+    console.log(computerSIMON.patternArray)
+
+    //Change turn status
+    computerSIMON.turnStatus = false;
+
 }
-
-
-
-
-
-
-//ATTEMPT TO SHORTEN CODE OF USER DIV CLICK, BREAKS WHEN RECORDING USER ARRAY BC OF CALL
-function divclick (i) {
-    document.querySelectorAll("input.color")[i].addEventListener("click", function() {
-         blinkbeepDiv (i)
-         user.patternArray.push(i)
-    })
-}
-// divclick (0)
-// divclick (1)
-// divclick (2)
-// divclick (3)
-
-
-
 
 //Gameplay Legnth, determines levels, taken from original game ???????
 //SKILL LVL 1 SEQ 8
 //SKILL LVL 2 SEQ 14
 //SKILL LVL 3 SEQ 20
 //SKILL LVL 4 SEQ 31
-function patternPusher (seqLength) {
-    levelLimitor++;
-    
-    if (levelLimitor>seqLength) {
-        return;
-    }
-        computerSIMON.patternArray.push(randomNumDef)
-    return randomNumDef
-}
+
 
 //Comparing Arrays - KEEP
 //TOOK OUT COMPARING LENGTH PART, WAS ENDING CODE TOO EARLY
@@ -215,7 +189,7 @@ function compareLASTPattern(x, y) {
 
 //Singular Div Animation. i is div refers to div class - KEEP
 function blinkDiv (i) {
-    setTimeout(function(){ litUpDiv (i) }, 200);
+    setTimeout(function(){ litUpDiv (i) }, 100);
     setTimeout(function(){ dimmedDownDiv (i) }, 500);
 }
 
@@ -251,4 +225,26 @@ function startButtonAnimation () {
 function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
-//Pattern Array needs to be limited by level mode. Start with "Easy" array length 8.
+
+//ATTEMPT TO SHORTEN CODE OF USER DIV CLICK, BREAKS WHEN RECORDING USER ARRAY BC OF CALL
+// function divclick (i) {
+//     document.querySelectorAll("input.color")[i].addEventListener("click", function() {
+//          blinkbeepDiv (i)
+//          user.patternArray.push(i)
+//     })
+// }
+// divclick (0)
+// divclick (1)
+// divclick (2)
+// divclick (3)
+//
+//OLD CODE, NOT APPLICABLE IN REWORK
+// function patternPusher (seqLength) {
+//     levelLimitor++;
+    
+//     if (levelLimitor>seqLength) {
+//         return;
+//     }
+//         computerSIMON.patternArray.push(randomNumDef)
+//     return randomNumDef
+// }
