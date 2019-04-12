@@ -55,21 +55,48 @@ function playGame () {
 
 //USER CODE, TURN 1
 
-//MAKES DIVS CLICK AND LIGHT IN RESPONSE
-divclick (0)
-divclick (1)
-divclick (2)
-divclick (3)
+//MAKES DIVS CLICK AND LIGHT IN RESPONSE AND RECORDING THAT DIV CLICK. NEED SOUND FILE ADD
+document.querySelectorAll("input.color")[0].addEventListener("click", function() {
+    blinkbeepDiv (0)
+    user.patternArray.push(0)
+    console.log(user.patternArray)
+})
 
-//RECORDING THAT DIV CLICK
+document.querySelectorAll("input.color")[1].addEventListener("click", function() {
+    blinkbeepDiv (1)
+    user.patternArray.push(1)
+    console.log(user.patternArray)
+})
+
+document.querySelectorAll("input.color")[2].addEventListener("click", function() {
+    blinkbeepDiv (2)
+    user.patternArray.push(2)
+    console.log(user.patternArray)
+})
+
+document.querySelectorAll("input.color")[3].addEventListener("click", function() {
+    blinkbeepDiv (3)
+    user.patternArray.push(3)
+    console.log(user.patternArray)
+})
 
 
-
-    // //if user selects easy
-    // patternPusher (9)
-    // //button lights up
-    // turnChanger()
 }
+
+
+//ATTEMPT TO SHORTEN CODE OF USER DIV CLICK, BREAKS WHEN RECORDING USER ARRAY BC OF CALL
+function divclick (i) {
+    document.querySelectorAll("input.color")[i].addEventListener("click", function() {
+         blinkbeepDiv (i)
+         user.patternArray.push(i)
+    })
+}
+// divclick (0)
+// divclick (1)
+// divclick (2)
+// divclick (3)
+
+
 
 
 //Gameplay Legnth, determines levels, taken from original game
@@ -117,11 +144,7 @@ function turnChanger() {
 
 
 
-function divclick (i) {
-    document.querySelectorAll("input.color")[i].addEventListener("click", function() {
-         blinkbeepDiv (i)
-    })
-}
+
 
 // function divclickRecord() {
 //    /* if () {
