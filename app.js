@@ -48,74 +48,68 @@ compSIMONrun()
 
 //MAKES DIVS CLICK AND LIGHT IN RESPONSE AND RECORDING THAT DIV CLICK. NEED SOUND FILE ADD
 //ALSO NESTED IF TO COMPARE, NEEDS TO HAPPEN IN EACH CLICK FOR UPDATE OF NESTED IF STATEMENT
+//reset user array at the beginning of each user turn to have compare arrays length trigger!!!!!!!!!!!!
 document.querySelectorAll("input.color")[0].addEventListener("click", function() {
     blinkbeepDiv (0)
     user.patternArray.push(0)
-    if (user.patternArray.length === computerSIMON.patternArray.length) {
-        comparePattern(user.patternArray, computerSIMON.patternArray)
-            if (comparePattern(user.patternArray, computerSIMON.patternArray)===true) {
-                compSIMONrun()
-                console.log("comp turn")
-// get back to computer turn not working
-            }
-            else {
-//END GAME
-                console.log("END GAME")
-            }
+    if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
+        //END GAME
+        console.log("END GAME")
+    }   
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
+        // get back to computer turn not working
+        compSIMONrun()
+        console.log("comp turn")
     }
+    
+   
 })
+
 
 document.querySelectorAll("input.color")[1].addEventListener("click", function() {
     blinkbeepDiv (1)
     user.patternArray.push(1)
-    if (user.patternArray.length === computerSIMON.patternArray.length) {
-        comparePattern(user.patternArray, computerSIMON.patternArray)
-        if (comparePattern(user.patternArray, computerSIMON.patternArray)===true) {
-            compSIMONrun()
-            console.log("comp turn")
-// get back to computer turn not working
-        }
-        else {
-//END GAME
-            console.log("END GAME")
-        }
-
+    if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
+        //END GAME
+        console.log("END GAME")
+    }   
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
+        // get back to computer turn not working
+        compSIMONrun()
+        console.log("comp turn")
     }
+
 })
 
 document.querySelectorAll("input.color")[2].addEventListener("click", function() {
     blinkbeepDiv (2)
     user.patternArray.push(2)
-    if (user.patternArray.length === computerSIMON.patternArray.length) {
-        comparePattern(user.patternArray, computerSIMON.patternArray)
-        if (comparePattern(user.patternArray, computerSIMON.patternArray)===true) {
-            compSIMONrun()
-            console.log("comp turn")
-// get back to computer turn not working
-        }
-        else {
-//END GAME
+    if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
+        //END GAME
         console.log("END GAME")
-        }}
-
+    }   
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
+        // get back to computer turn not working
+        compSIMONrun()
+        console.log("comp turn")
+    }
 
 })
 
 document.querySelectorAll("input.color")[3].addEventListener("click", function() {
-    blinkbeepDiv (3)
+    blinkbeepDiv(3);
     user.patternArray.push(3)
-    if (user.patternArray.length === computerSIMON.patternArray.length) {
-        comparePattern(user.patternArray, computerSIMON.patternArray)
-        if (comparePattern(user.patternArray, computerSIMON.patternArray)===true) {
-            compSIMONrun()
-            console.log("comp turn")
-// get back to computer turn not working
-        }
-        else {
-//END GAME
+    if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
+        //END GAME
         console.log("END GAME")
-        }
+    }   
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
+        // get back to computer turn not working
+        compSIMONrun()
+        console.log("comp turn")
     }
+
+    
 })
 
 }
@@ -137,6 +131,8 @@ for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
     console.log(k)
 }
 
+//RESET PLAYER ARRAY
+user.patternArray = []
 
         // setTimeout(function(){ blinkDiv (computerSIMON.patternArray[0]) }, 1000); 
         //  if (computerSIMON.patternArray.length === 2) {
@@ -144,12 +140,6 @@ for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
         //  }
         //  if (computerSIMON.patternArray.length === 3) {
         //     setTimeout(function(){ blinkDiv (computerSIMON.patternArray[2]) }, 3000);
-        //  }
-        //  if (computerSIMON.patternArray.length === 4) {
-        //     setTimeout(function(){ blinkDiv (computerSIMON.patternArray[3]) }, 4000);
-        //  }
-        //  if (computerSIMON.patternArray.length === 5) {
-        //     setTimeout(function(){ blinkDiv (computerSIMON.patternArray[5]) }, 5000);
         //  }
     
     //CHECK TEST: WORKING
@@ -197,11 +187,25 @@ function patternPusher (seqLength) {
 }
 
 //Comparing Arrays - KEEP
+//TOOK OUT COMPARING LENGTH PART, WAS ENDING CODE TOO EARLY
 function comparePattern(x, y) {
+    // if (x.length != y.length) {
+    //     return false;
+    // }
+    for (let i = 0; i < x.length; i++) {
+        if (x[i] !== y[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+//Compare the LAST ELEMENT of Arrays
+function compareLASTPattern(x, y) {
     if (x.length != y.length) {
         return false;
     }
-    for (let i = 0; i < x.length; i++) {
+    for (let i = (x.length-1); i < x.length; i++) {
         if (x[i] !== y[i]) {
             return false;
         }
