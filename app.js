@@ -9,8 +9,6 @@ let computerSIMON = {
     turnStatus: true,
     patternArray: []
 } 
-//Varible so that the SAME random number is pushed to both arrays
-let randomNumDef = randomNum(0,4)
 
 //Global Variables
 let switchOn = null;
@@ -44,6 +42,11 @@ function playGame () {
     winRazz = false;
     computerSIMON.patternArray = []
     user.patternArray = []
+
+    //if user selects easy
+    patternPusher (9)
+    //button lights up
+    turnChanger()
 }
 
 
@@ -54,34 +57,34 @@ function playGame () {
 //SKILL LVL 4 SEQ 31
 function patternPusher (seqLength) {
     levelLimitor++;
-        computerSIMON.patternArray.push(randomNumDef)
+    let randomNumDef = randomNum(0, 4)
     if (levelLimitor>seqLength) {
         return;
     }
+        computerSIMON.patternArray.push(randomNumDef)
+    return randomNumDef
 }
 
 //Comparing Arrays
 function comparePattern(x, y) {
-let arrayStatus = null;
-    if (x.length === y.length) {
-        arrayStatus = true;
+
+    if (x.length != y.length) {
+        return false;
     }
+
     for (let i = 0; i < x.length; i++) {
-        if (x[i]===y[i]) {
-            arrayStatus = true;
+        if (x[i] !== y[i]) {
+            return false;
         }
-        else {
-           return arrayStatus = false;
-        } 
     }
-    return arrayStatus;
+
+    return true;
 }
 
-//Turn Changer
+//Turn Cnger
 function turnChanger() {
     if (!user.turnStatus) {
         computerSIMON.turnStatus === true
-        console.log("false turn")
     }
     else if (user.turnStatus) {
         computerSIMON.turnStatus === false
@@ -99,14 +102,14 @@ function divclick (i) {
     document.querySelectorAll("input.color")[i].addEventListener("click", function() {
         divclickRecord()
         comparePattern(computerSIMON.patternArray, user.patternArray)
-        blinkbeepDiv (i)
+         blinkbeepDiv (i)
     })
 }
 
 function divclickRecord() {
-    if () {
+   /* if () {
         user.patternArray.push(i)
-    }
+    }*/
 }
 
 //Singular Div Animation. i is div refers to div class Time needs to be parametertized?
