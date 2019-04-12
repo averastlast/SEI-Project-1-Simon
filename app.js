@@ -43,11 +43,7 @@ function playGame () {
 //COMPUTER CODE, TURN 1
 compSIMONrun()
 
- //maybe call function for turn?
- if (computerSIMON.turnStatus === false) {
-     //run the user turn code
-     //at end of user code change back to computer code
- 
+ if (computerSIMON.turnStatus === false) { 
 //USER CODE, TURN 1
 
 //MAKES DIVS CLICK AND LIGHT IN RESPONSE AND RECORDING THAT DIV CLICK. NEED SOUND FILE ADD
@@ -134,11 +130,27 @@ function compSIMONrun() {
     //PUSHES THAT RANDOM NUMBER INTO COMPUTER ARRAY
         computerSIMON.patternArray.push(randomNumDef)
     
-    //LIGHT UP THAT DIV CORRESPONDING TO RANDOM NUMBER
-        setTimeout(function(){ blinkDiv (computerSIMON.patternArray[0]) }, 1000); 
-         if (computerSIMON.patternArray.length === 2) {
-            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[1]) }, 2000);
-         }
+    //LIGHT UP THAT DIV CORRESPONDING TO RANDOM NUMBER, FIND PATTERN FUNCTION!!!!!!!!!
+
+for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
+    setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (1000 + (k*1000)))
+    console.log(k)
+}
+
+
+        // setTimeout(function(){ blinkDiv (computerSIMON.patternArray[0]) }, 1000); 
+        //  if (computerSIMON.patternArray.length === 2) {
+        //     setTimeout(function(){ blinkDiv (computerSIMON.patternArray[1]) }, 2000);
+        //  }
+        //  if (computerSIMON.patternArray.length === 3) {
+        //     setTimeout(function(){ blinkDiv (computerSIMON.patternArray[2]) }, 3000);
+        //  }
+        //  if (computerSIMON.patternArray.length === 4) {
+        //     setTimeout(function(){ blinkDiv (computerSIMON.patternArray[3]) }, 4000);
+        //  }
+        //  if (computerSIMON.patternArray.length === 5) {
+        //     setTimeout(function(){ blinkDiv (computerSIMON.patternArray[5]) }, 5000);
+        //  }
     
     //CHECK TEST: WORKING
         console.log(computerSIMON.patternArray)
@@ -148,8 +160,6 @@ function compSIMONrun() {
         computerSIMON.turnStatus = false;
         // console.log(computerSIMON.turnStatus)
 }
-
-
 
 
 
