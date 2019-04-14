@@ -157,29 +157,15 @@ function compSIMONrun() {
         computerSIMON.patternArray.push(randomNumDef)
     
     //LIGHT UP THAT DIV CORRESPONDING TO RANDOM NUMBER, PATTERN.
-    if (levelLimitor=8) {
         for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
-            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (1000 + (k*1000)))
+            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (1100 + (k*1000)))
         }
-    }
-    else if (levelLimitor=14) {
-        for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
-            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (500 + (k*500)))
-        }
-    }
-    else if (levelLimitor=20) {
-        for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
-            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (10 + (k*10)))
-        }
-    }
-    
-
     //RESET PLAYER ARRAY
     user.patternArray = []
 
     //CHECK TEST: WORKING
     console.log(computerSIMON.patternArray)
-
+        console.log(levelLimitor)
     //Change turn status
     computerSIMON.turnStatus = false;
 
@@ -214,8 +200,18 @@ function compareLASTPattern(x, y) {
 
 //Singular Div Animation. i is div refers to div class - KEEP
 function blinkDiv (i) {
+    if (levelLimitor===8) {
     setTimeout(function(){ litUpDiv (i) }, 100);
-    setTimeout(function(){ dimmedDownDiv (i) }, 500);
+    setTimeout(function(){ dimmedDownDiv (i) }, 1000);
+    }
+    else if (levelLimitor===14) {
+    setTimeout(function(){ litUpDiv (i) }, 100);
+    setTimeout(function(){ dimmedDownDiv (i) }, 600);
+    }
+    else if (levelLimitor===20) {
+    setTimeout(function(){ litUpDiv (i) }, 100);
+    setTimeout(function(){ dimmedDownDiv (i) }, 350);
+    }
 }
 
 //Lights up divs, starts audio - KEEP
