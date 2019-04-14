@@ -64,7 +64,7 @@ compSIMONrun()
 //IF STATEMENT COMPARES ARRAY VALUES AS THEY ARE PROVIDED BY THE USER, ELSE IF STARTS THE COMPUTERS TURN
 //NEED TO MAKE BUTTONS NOT CLICKABLE DURING COMP SIMON RUN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 document.querySelectorAll("input.color")[0].addEventListener("click", function() {
-    blinkbeepDiv (0)
+    blinkDiv (0)
     user.patternArray.push(0)
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
@@ -84,7 +84,7 @@ document.querySelectorAll("input.color")[0].addEventListener("click", function()
 })
 
 document.querySelectorAll("input.color")[1].addEventListener("click", function() {
-    blinkbeepDiv (1)
+    blinkDiv (1)
     user.patternArray.push(1)
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
@@ -104,7 +104,7 @@ document.querySelectorAll("input.color")[1].addEventListener("click", function()
 })
 
 document.querySelectorAll("input.color")[2].addEventListener("click", function() {
-    blinkbeepDiv (2)
+    blinkDiv (2)
     user.patternArray.push(2)
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
@@ -124,7 +124,7 @@ document.querySelectorAll("input.color")[2].addEventListener("click", function()
 })
 
 document.querySelectorAll("input.color")[3].addEventListener("click", function() {
-    blinkbeepDiv(3);
+    blinkDiv(3);
     user.patternArray.push(3)
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
@@ -218,24 +218,19 @@ function blinkDiv (i) {
     setTimeout(function(){ dimmedDownDiv (i) }, 500);
 }
 
-//Lights up divs - KEEP
+//Lights up divs, starts audio - KEEP
 function litUpDiv (i) {
     document.querySelectorAll("input.color")[i].classList.add("lightOn") 
+    document.querySelectorAll("audio")[i].play()
 }
 //Dims down divs - KEEP
 function dimmedDownDiv (i) {
     document.querySelectorAll("input.color")[i].classList.remove("lightOn") 
 }
 
-//Singular Div Audio ????
-function audioDiv () {
-    
-}
-
 //Singular Div AnimatedAudio WORK!!!!!!
 function blinkbeepDiv (i) {
     blinkDiv (i)
-    document.getElementById("a").play()
 }
 //Startup flash (flashes all squares to signal beginning of game) WORK!!!!!!!
 function startButtonAnimation () {
