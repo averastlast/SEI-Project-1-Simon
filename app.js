@@ -69,7 +69,7 @@ document.querySelectorAll("input.color")[0].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
-        document.getElementById("scorekeeper").innerHTML = ((user.patternArray.length) - 1)
+        document.getElementById("scorekeeper").innerHTML = ((computerSIMON.patternArray.length) - 1)
     }   
     //WIN CONDITIONS need to make number a variable to change based on level!!!!!!!!!!!
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === levelLimitor) {
@@ -89,7 +89,7 @@ document.querySelectorAll("input.color")[1].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
-        document.getElementById("scorekeeper").innerHTML = ((user.patternArray.length) - 1)
+        document.getElementById("scorekeeper").innerHTML = ((computerSIMON.patternArray.length) - 1)
     }   
     //WIN CONDITIONS
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === levelLimitor) {
@@ -109,7 +109,7 @@ document.querySelectorAll("input.color")[2].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
-        document.getElementById("scorekeeper").innerHTML = ((user.patternArray.length) - 1)
+        document.getElementById("scorekeeper").innerHTML = ((computerSIMON.patternArray.length) - 1)
     }
     //WIN CONDITIONS
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === levelLimitor) {
@@ -129,7 +129,7 @@ document.querySelectorAll("input.color")[3].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
-        document.getElementById("scorekeeper").innerHTML = ((user.patternArray.length) - 1)
+        document.getElementById("scorekeeper").innerHTML = ((computerSIMON.patternArray.length) - 1)
     }
     //WIN CONDITIONS
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === levelLimitor) {
@@ -157,9 +157,22 @@ function compSIMONrun() {
         computerSIMON.patternArray.push(randomNumDef)
     
     //LIGHT UP THAT DIV CORRESPONDING TO RANDOM NUMBER, PATTERN.
-    for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
-        setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (800 + (k*800)))
+    if (levelLimitor=8) {
+        for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
+            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (1000 + (k*1000)))
+        }
     }
+    else if (levelLimitor=14) {
+        for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
+            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (500 + (k*500)))
+        }
+    }
+    else if (levelLimitor=20) {
+        for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
+            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (10 + (k*10)))
+        }
+    }
+    
 
     //RESET PLAYER ARRAY
     user.patternArray = []
@@ -222,7 +235,7 @@ function audioDiv () {
 //Singular Div AnimatedAudio WORK!!!!!!
 function blinkbeepDiv (i) {
     blinkDiv (i)
-    //audioDiv (i)
+    document.getElementById("a").play()
 }
 //Startup flash (flashes all squares to signal beginning of game) WORK!!!!!!!
 function startButtonAnimation () {
