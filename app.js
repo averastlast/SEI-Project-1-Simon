@@ -34,6 +34,20 @@ document.querySelectorAll("input.start")[0].addEventListener("click", function()
     // startButtonAnimation ()
     // setTimeout(function() {startButtonAnimation ()}, 1000)
     // if (switchOn || winRazz) {
+
+    //Determines sequence length based on selected level
+        if (document.querySelectorAll("input.level")[0].checked) {
+            levelLimitor = 8;
+            console.log(levelLimitor)
+        }
+        if (document.querySelectorAll("input.level")[1].checked) {
+            levelLimitor = 14;
+            console.log(levelLimitor)
+        }
+        if (document.querySelectorAll("input.level")[2].checked) {
+            levelLimitor = 20;
+            console.log(levelLimitor)
+        } 
         playGame()
     // }
 })
@@ -55,9 +69,10 @@ document.querySelectorAll("input.color")[0].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
+        document.getElementById("scorekeeper").innerHTML = ((user.patternArray.length) - 1)
     }   
     //WIN CONDITIONS need to make number a variable to change based on level!!!!!!!!!!!
-    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === 4) {
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === levelLimitor) {
         console.log("WIN")
     }
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
@@ -74,9 +89,10 @@ document.querySelectorAll("input.color")[1].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
+        document.getElementById("scorekeeper").innerHTML = ((user.patternArray.length) - 1)
     }   
     //WIN CONDITIONS
-    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === 4) {
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === levelLimitor) {
         console.log("WIN")
     }
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
@@ -93,9 +109,10 @@ document.querySelectorAll("input.color")[2].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
+        document.getElementById("scorekeeper").innerHTML = ((user.patternArray.length) - 1)
     }
     //WIN CONDITIONS
-    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === 4) {
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === levelLimitor) {
         console.log("WIN")
     }   
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
@@ -112,9 +129,10 @@ document.querySelectorAll("input.color")[3].addEventListener("click", function()
     if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
         //END GAME
         console.log("END GAME")
+        document.getElementById("scorekeeper").innerHTML = ((user.patternArray.length) - 1)
     }
     //WIN CONDITIONS
-    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === 4) {
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true && computerSIMON.patternArray.length === levelLimitor) {
         console.log("WIN")
     }   
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
@@ -131,6 +149,7 @@ document.querySelectorAll("input.color")[3].addEventListener("click", function()
 
 
 function compSIMONrun() {
+
     //SELECT RANDOM NUMBER (0-3)
         let randomNumDef = randomNum(0, 4)
     
@@ -152,13 +171,6 @@ function compSIMONrun() {
     computerSIMON.turnStatus = false;
 
 }
-
-//Gameplay Legnth, determines levels, taken from original game ???????
-//SKILL LVL 1 SEQ 8
-//SKILL LVL 2 SEQ 14
-//SKILL LVL 3 SEQ 20
-//SKILL LVL 4 SEQ 31
-
 
 //Comparing Arrays - KEEP
 //TOOK OUT COMPARING LENGTH PART, WAS ENDING CODE TOO EARLY
