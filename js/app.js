@@ -43,111 +43,27 @@ document.querySelectorAll("input.start")[0].addEventListener("click", function (
     playGame()
 })
 
+//EDGE CASES DO OCCUR SOMETIMES, NEEDS TESTING
 function playGame() {
 
     //COMPUTER CODE
     compSIMONrun()
 
     //USER CODE
-
-    //MAKES DIVS CLICK AND LIGHT IN RESPONSE AND RECORDING THAT DIV CLICK. NEED SOUND FILE ADD
-    //IF STATEMENT COMPARES ARRAY VALUES AS THEY ARE PROVIDED BY THE USER, ELSE IF STARTS THE COMPUTERS TURN
-    //NEED TO MAKE BUTTONS NOT CLICKABLE DURING COMP SIMON RUN - RAN OUT OF TIME
-    //WIN AND LOSE CONDITIONS EMPTY COMPUTER ARRAY TO START NEW GAME
-    //START BUTTON CHANGES TO SIGNAL LOSS OR WIN
-
-    //CAN BE CLEANED UP MORE IF MORE TIME, CODE REPEATS, 
-    //EDGE CASES DO OCCUR SOMETIMES, NEEDS TESTING
     document.querySelectorAll("input.color")[0].addEventListener("click", function () {
-        blinkDiv(0)
-        user.patternArray.push(0)
-        if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
-            //END GAME
-            console.log("END GAME")
-            document.getElementById("scorekeeper").innerHTML = ((computerSIMON.patternArray.length) - 1)
-            document.querySelector("input.start").value = "Try Again?"
-            computerSIMON.patternArray = []
-        }
-        //WIN CONDITIONS
-        else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true && computerSIMON.patternArray.length === levelLimitor) {
-            console.log("WIN")
-            document.getElementById("scorekeeper").innerHTML = (user.patternArray.length)
-            document.querySelector("input.start").value = "You WIN! Try Again?"
-            computerSIMON.patternArray = []
-        }
-        else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true) {
-            compSIMONrun()
-        }
-
+        userRun(0)
     })
 
     document.querySelectorAll("input.color")[1].addEventListener("click", function () {
-        blinkDiv(1)
-        user.patternArray.push(1)
-        if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
-            //END GAME
-            console.log("END GAME")
-            document.getElementById("scorekeeper").innerHTML = ((computerSIMON.patternArray.length) - 1)
-            document.querySelector("input.start").value = "Try Again?"
-            computerSIMON.patternArray = []
-        }
-        //WIN CONDITIONS
-        else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true && computerSIMON.patternArray.length === levelLimitor) {
-            console.log("WIN")
-            document.getElementById("scorekeeper").innerHTML = (user.patternArray.length)
-            document.querySelector("input.start").value = "You WIN! Try Again?"
-            computerSIMON.patternArray = []
-        }
-        else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true) {
-            compSIMONrun()
-            console.log("comp turn")
-        }
-
+        userRun(1)
     })
 
     document.querySelectorAll("input.color")[2].addEventListener("click", function () {
-        blinkDiv(2)
-        user.patternArray.push(2)
-        if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
-            //END GAME
-            console.log("END GAME")
-            document.getElementById("scorekeeper").innerHTML = ((computerSIMON.patternArray.length) - 1)
-            document.querySelector("input.start").value = "Try Again?"
-            computerSIMON.patternArray = []
-        }
-        //WIN CONDITIONS
-        else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true && computerSIMON.patternArray.length === levelLimitor) {
-            console.log("WIN")
-            document.getElementById("scorekeeper").innerHTML = (user.patternArray.length)
-            document.querySelector("input.start").value = "You WIN! Try Again?"
-            computerSIMON.patternArray = []
-        }
-        else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true) {
-            compSIMONrun()
-        }
-
+        userRun(2)
     })
 
     document.querySelectorAll("input.color")[3].addEventListener("click", function () {
-        blinkDiv(3);
-        user.patternArray.push(3)
-        if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
-            //END GAME
-            console.log("END GAME")
-            document.getElementById("scorekeeper").innerHTML = ((computerSIMON.patternArray.length) - 1)
-            document.querySelector("input.start").value = "Try Again?"
-            computerSIMON.patternArray = []
-        }
-        //WIN CONDITIONS
-        else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true && computerSIMON.patternArray.length === levelLimitor) {
-            console.log("WIN")
-            document.getElementById("scorekeeper").innerHTML = (user.patternArray.length)
-            document.querySelector("input.start").value = "You WIN! Try Again?"
-            computerSIMON.patternArray = []
-        }
-        else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true) {
-            compSIMONrun()
-        }
+        userRun(3)
     })
 
 }
@@ -184,6 +100,35 @@ function compSIMONrun() {
     //Change turn status
     computerSIMON.turnStatus = false;
 }
+
+//MAKES DIVS CLICK AND LIGHT IN RESPONSE AND RECORDING THAT DIV CLICK. NEED SOUND FILE ADD
+//IF STATEMENT COMPARES ARRAY VALUES AS THEY ARE PROVIDED BY THE USER, ELSE IF STARTS THE COMPUTERS TURN
+//NEED TO MAKE BUTTONS NOT CLICKABLE DURING COMP SIMON RUN - RAN OUT OF TIME
+//WIN AND LOSE CONDITIONS EMPTY COMPUTER ARRAY TO START NEW GAME
+//START BUTTON CHANGES TO SIGNAL LOSS OR WIN
+
+function userRun(i) {
+    blinkDiv(i)
+    user.patternArray.push(i)
+    if (comparePattern(user.patternArray, computerSIMON.patternArray) === false) {
+        //END GAME
+        console.log("END GAME")
+        document.getElementById("scorekeeper").innerHTML = ((computerSIMON.patternArray.length) - 1)
+        document.querySelector("input.start").value = "Try Again?"
+        computerSIMON.patternArray = []
+    }
+    //WIN CONDITIONS
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true && computerSIMON.patternArray.length === levelLimitor) {
+        console.log("WIN")
+        document.getElementById("scorekeeper").innerHTML = (user.patternArray.length)
+        document.querySelector("input.start").value = "You WIN! Try Again?"
+        computerSIMON.patternArray = []
+    }
+    else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray) === true) {
+        compSIMONrun()
+    }
+}
+
 
 //Comparing Arrays - KEEP
 //TOOK OUT COMPARING LENGTH PART, WAS ENDING CODE TOO EARLY
