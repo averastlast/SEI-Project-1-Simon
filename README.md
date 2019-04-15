@@ -18,4 +18,18 @@ When the page loads, the player is brought to game page. The game has a theme of
 
   * Scoreboard
   * Reset Button After Loss or Win
-  * Highlights winning squares
+  * Level Selector
+
+## Wireframe
+
+![Wireframe](https://github.com/iamsydsmith/tic-tac-toe/blob/master/img/Tic_Tac_Toe_-_wireframe.png)
+
+## Winning Combination
+
+![Winning Combination](https://github.com/iamsydsmith/tic-tac-toe/blob/gh-pages/img/photo.jpg)
+
+## Future Development
+
+
+  * Make it responsive
+  * Add A.I. (player vs. computer)
