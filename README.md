@@ -10,7 +10,7 @@ When the page loads, the player is brought to game page. The game has a theme of
 ## Technologies Used
 
   * Languages - HTML5, CSS3, Javascript
-  * Design - Da Font
+  * Design - Da Font, Unsplash
   * Project Planning & User Stories - [Trello](https://trello.com/b/mSbMbdl9/sei-project-one)
   * Sublime Text 3
 
@@ -22,14 +22,17 @@ When the page loads, the player is brought to game page. The game has a theme of
 
 ## Wireframe
 
-![Wireframe](https://github.com/iamsydsmith/tic-tac-toe/blob/master/img/Tic_Tac_Toe_-_wireframe.png)
+![Wireframe](https://github.com/averastlast/SEI-Project-1-Simon/blob/master/wireframes/wireframe01.jpg)
+![Wireframe](https://github.com/averastlast/SEI-Project-1-Simon/blob/master/wireframes/wireframe02.jpg)
 
-## Winning Combination
+## Whiteboarding
 
-![Winning Combination](https://github.com/iamsydsmith/tic-tac-toe/blob/gh-pages/img/photo.jpg)
+![Whiteboarding](https://github.com/averastlast/SEI-Project-1-Simon/blob/master/wireframes/whiteboarding01.jpg)
+![Whiteboarding](https://github.com/averastlast/SEI-Project-1-Simon/blob/master/wireframes/whiteboarding02.jpg)
 
 ## Future Development
 
-
-  * Make it responsive
-  * Add A.I. (player vs. computer)
+  * Add a fifth pattern button for some personality
+  * Make the pattern noises the 5 notes from the film
+  * Try to nail down all sound issues, still iffy sometimes if same button activates too fast in a row
+  * Add a high scoreboard
