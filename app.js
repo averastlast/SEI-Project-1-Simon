@@ -16,9 +16,10 @@ let levelLimitor = 0;
 //Start Button
 document.querySelectorAll("input.start")[0].addEventListener("click", function() {
     
-    //RESETS START BUTTON VALUE AFTER LOSS OR WIN
+    //RESETS START BUTTON VALUE AFTER LOSS OR WIN, SCORE IS ALSO RESET
     if (document.querySelector("input.start").value !== 'Initiate Contact') {
         document.querySelector("input.start").value = 'Initiate Contact'
+        document.getElementById("scorekeeper").innerHTML = ""
     }
 
     //START ANIMATION
