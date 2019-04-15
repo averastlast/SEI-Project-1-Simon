@@ -5,15 +5,49 @@
     font-family: Alien;
     font-size: 10vh
 }
+/* RADIO BUTTON STYLING HELP FROM STACKOVERFLOW */
+input[type="radio"]:after {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    left: -1px;
+    position: relative;
+    background-color: #151836;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+input[type="radio"]:checked:after {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    left: -1px;
+    position: relative;
+    background-color: #6ccaf0;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
 .lvlContainer {
     margin-bottom: 1%;
+    font-size: 2.5vh;
 }
 input.start {
-    color: red;
+    color: rgb(252, 185, 0);
+    background: none;
+    font-size: 3vh;
     font-family: 'Body';
-    font-size: 500px;
+    outline: none;
+    border: none;
     margin-bottom: 1%;
+    border-radius: 10%;
 }
+input.start:hover {
+    text-shadow: 0 0 5px rgb(255, 238, 0);
+}
+
 .scoreBoard {
     display: flex;
     justify-content: center;
@@ -27,6 +61,8 @@ input.start {
 p {
     line-height: 0;
 }
+/* BG IMG FROM https://unsplash.com/photos/BGXnAx-E2Gw */
+/* PERSONAL IMG EDIT DONE IN VIEW */
 body{
     height: 100vh;
     width: 100vw;
@@ -45,26 +81,33 @@ body{
     flex-wrap: wrap;
     justify-content: center;
 }
-
 #yellow {
     height: 30vh;
     width: 40vw;
-    background: rgb(150, 150, 0)
+    background: rgb(150, 150, 0);
+    outline: none;
+    border:1px solid black;
 }
 #blue {
     height: 30vh;
     width: 40vw;
-    background: rgb(0, 0, 150)
+    background: rgb(0, 0, 150);
+    outline: none;
+    border:1px solid black;
 }
 #red {
     height: 30vh;
     width: 40vw;
-    background: rgb(150, 0, 0)
+    background: rgb(150, 0, 0);
+    outline: none;
+    border:1px solid black;
 }
 #green {
     height: 30vh;
     width: 40vw;
-    background: rgb(0, 73, 0)
+    background: rgb(0, 73, 0);
+    outline: none;
+    border:1px solid black;
 }
 
 .lightOn {
