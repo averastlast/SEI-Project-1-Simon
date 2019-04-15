@@ -10,30 +10,13 @@ let computerSIMON = {
     patternArray: []
 } 
 
-//Global Variables
-let switchOn = null;
-let winRazz
+//Global Variable
 let levelLimitor = 0;
-let onBTNClickCount = 0;
-
-//On Button, alters by click number
-document.querySelectorAll("input.on")[0].addEventListener("click", function() { 
-    onBTNClickCount+=1; 
-//ON    
-    if (onBTNClickCount % 2 !== 0) {
-        switchOn = true
-    }
-//OFF    
-    else {
-        switchOn = false
-    }
-})
 
 //Start Button
 document.querySelectorAll("input.start")[0].addEventListener("click", function() {
-    // startButtonAnimation ()
-    // setTimeout(function() {startButtonAnimation ()}, 1000)
-    // if (switchOn || winRazz) {
+    
+    setTimeout(function() {startButtonAnimation ()}, 10)
 
     //Determines sequence length based on selected level
         if (document.querySelectorAll("input.level")[0].checked) {
@@ -49,7 +32,6 @@ document.querySelectorAll("input.start")[0].addEventListener("click", function()
             console.log(levelLimitor)
         } 
         playGame()
-    // }
 })
 
 function playGame () {
@@ -76,9 +58,7 @@ document.querySelectorAll("input.color")[0].addEventListener("click", function()
         console.log("WIN")
     }
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
-        // get back to computer turn not working
         compSIMONrun()
-        console.log("comp turn")
     }
     
 })
@@ -96,7 +76,6 @@ document.querySelectorAll("input.color")[1].addEventListener("click", function()
         console.log("WIN")
     }
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
-        // get back to computer turn not working
         compSIMONrun()
         console.log("comp turn")
     }
@@ -116,9 +95,7 @@ document.querySelectorAll("input.color")[2].addEventListener("click", function()
         console.log("WIN")
     }   
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
-        // get back to computer turn not working
         compSIMONrun()
-        console.log("comp turn")
     }
     
 })
@@ -136,9 +113,7 @@ document.querySelectorAll("input.color")[3].addEventListener("click", function()
         console.log("WIN")
     }   
     else if (compareLASTPattern(user.patternArray, computerSIMON.patternArray)===true) {
-        // get back to computer turn not working
         compSIMONrun()
-        console.log("comp turn")
     }
     
 })
@@ -157,18 +132,28 @@ function compSIMONrun() {
         computerSIMON.patternArray.push(randomNumDef)
     
     //LIGHT UP THAT DIV CORRESPONDING TO RANDOM NUMBER, PATTERN.
+    if (levelLimitor===8) {
         for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
-            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (1100 + (k*1000)))
+            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (1000 + (k*1000)))
         }
+    }
+    if (levelLimitor===14) {
+        for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
+            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (1000 + (k*500)))
+        }
+    }
+    if (levelLimitor===20) {
+        for (let k = computerSIMON.patternArray.length - 1; k >=0; k--){
+            setTimeout(function(){ blinkDiv (computerSIMON.patternArray[k]) }, (1000 + (k*350)))
+        }
+    }
     //RESET PLAYER ARRAY
     user.patternArray = []
 
     //CHECK TEST: WORKING
     console.log(computerSIMON.patternArray)
-        console.log(levelLimitor)
     //Change turn status
     computerSIMON.turnStatus = false;
-
 }
 
 //Comparing Arrays - KEEP
@@ -221,18 +206,15 @@ function litUpDiv (i) {
 }
 //Dims down divs - KEEP
 function dimmedDownDiv (i) {
-    document.querySelectorAll("input.color")[i].classList.remove("lightOn") 
+    document.querySelectorAll("input.color")[i].classList.remove("lightOn")
+    document.querySelectorAll("audio")[i].pause();
+    document.querySelectorAll("audio")[i].currentTime = 0;
 }
 
-//Singular Div AnimatedAudio WORK!!!!!!
-function blinkbeepDiv (i) {
-    blinkDiv (i)
-}
 //Startup flash (flashes all squares to signal beginning of game) WORK!!!!!!!
 function startButtonAnimation () {
     for (let i = 0; i < 4; i++) {
         blinkDiv (i)
-        //audioDiv (i)
     }
 }
 
@@ -254,13 +236,30 @@ function randomNum(min, max) {
 // divclick (2)
 // divclick (3)
 //
-//OLD CODE, NOT APPLICABLE IN REWORK
+//OLD CODE, NOT APPLICABLE IN REWORK:
+
 // function patternPusher (seqLength) {
 //     levelLimitor++;
-    
 //     if (levelLimitor>seqLength) {
 //         return;
 //     }
 //         computerSIMON.patternArray.push(randomNumDef)
 //     return randomNumDef
 // }
+
+// let switchOn = null;
+// let winRazz
+// let onBTNClickCount = 0;
+
+//On Button, alters by click number
+// document.querySelectorAll("input.on")[0].addEventListener("click", function() { 
+//     onBTNClickCount+=1; 
+// //ON    
+//     if (onBTNClickCount % 2 !== 0) {
+//         switchOn = true
+//     }
+// //OFF    
+//     else {
+//         switchOn = false
+//     }
+// })

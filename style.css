@@ -1,3 +1,13 @@
+@font-face { font-family: Alien; src: url('fonts/Alien-Encounters-Regular.ttf'); }
+@font-face { font-family: Body; src: url('fonts/[z] Arista Light Trial.ttf'); }
+
+.gameTitle {
+    font-family: Alien;
+    font-size: 10vh
+}
+label {
+    font-family: Body;
+}
 body{
     display: flex;
     justify-content: center;

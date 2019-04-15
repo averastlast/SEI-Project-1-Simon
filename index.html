@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="app.js" defer></script>
 </head>
+
 <body>
 
     <audio src="sounds/APding.wav" type="audio/mpeg"></audio>
@@ -16,28 +18,30 @@
     <audio src="sounds/Blip.wav" type="audio/mpeg"></audio>
     <audio src="sounds/Eding.wav" type="audio/mpeg"></audio>
 
-    <h2>Simon</h2> 
-    <div class="scoreBoard">
-        <div class="scoreBoardTitle">Score:</div>
-        <p id="scorekeeper"></p>
+    <div class="gameTitle">Close Encounters</div>
+    
+    <div class="lvlContainer">
+        <input type="radio" class="level" name="level" value="easy" checked>
+        <label for="levelEasy">Easy</label>
+
+        <input type="radio" class="level" name="level">
+        <label for="levelMedium">Medium</label>
+
+        <input type="radio" class="level" name="level">
+        <label for="levelHard">Hard</label>
     </div>
-    <input class="on" type="button" value="ON">
-
-    <input type="radio" class="level" name="level" value="easy" checked>
-    <label for="levelEasy">Easy</label>
-
-    <input type="radio" class="level" name="level">
-    <label for="levelMedium">Medium</label>
-
-    <input type="radio" class="level" name="level">
-    <label for="levelHard">Hard</label>
-
-    <input class="start" type="button" value="Start">
-    <div class ="buttons">
+    <input class="start" type="button" value="Initiate Contact">
+    <div class="buttons">
         <input class="color" type="button" id="yellow" value="">
         <input class="color" type="button" id="blue" value="">
         <input class="color" type="button" id="red" value="">
         <input class="color" type="button" id="green" value="">
     </div>
+    <div class="scoreBoard">
+            <div class="scoreBoardTitle">Score:</div>
+            <p id="scorekeeper"></p>
+        </div>
+
 </body>
+
 </html>
